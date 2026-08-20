@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.PremiumClock" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#D6472D</item>
+        <item name="android:navigationBarColor">#F4F1EA</item>
+        <item name="android:statusBarColor">#F4F1EA</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

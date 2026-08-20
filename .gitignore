@@ -1,0 +1,19 @@
+# Browser application
+web/node_modules/
+web/dist/
+web/.manus/
+web/.manus-logs/
+
+# Android / Gradle build output
+android/.gradle/
+android/.kotlin/
+android/app/build/
+android/local.properties
+
+# Release binaries are published through GitHub Releases, not committed to Git.
+release-assets/
+*.apk
+*.aab
+
+# Local tooling
+.DS_Store

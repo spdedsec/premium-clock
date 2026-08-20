@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <application android:name=".PremiumClockApplication" android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="Premium Clock" android:roundIcon="@drawable/ic_launcher" android:supportsRtl="true" android:theme="@style/Theme.PremiumClock">
+        <activity android:name=".ui.AlarmRingActivity" android:exported="false" android:showOnLockScreen="true" android:turnScreenOn="true" />
+        <activity android:name=".ui.MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter></activity>
+        <receiver android:name=".services.AlarmReceiver" android:exported="false" />
+        <receiver android:name=".services.AlarmActionReceiver" android:exported="false" />
+        <receiver android:name=".services.TimerCompletionReceiver" android:exported="false" />
+        <service android:name=".services.TimerForegroundService" android:exported="false" android:foregroundServiceType="dataSync" />
+        <receiver android:name=".widgets.ClockWidgetReceiver" android:exported="true" android:label="Premium Clock"><intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter><meta-data android:name="android.appwidget.provider" android:resource="@xml/clock_widget_info" /></receiver>
+        <receiver android:name=".widgets.AlarmWidgetReceiver" android:exported="true" android:label="Next Alarm"><intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter><meta-data android:name="android.appwidget.provider" android:resource="@xml/alarm_widget_info" /></receiver>
+        <receiver android:name=".widgets.TimerWidgetReceiver" android:exported="true" android:label="Timer"><intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter><meta-data android:name="android.appwidget.provider" android:resource="@xml/timer_widget_info" /></receiver>
+        <receiver android:name=".widgets.StopwatchWidgetReceiver" android:exported="true" android:label="Stopwatch"><intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter><meta-data android:name="android.appwidget.provider" android:resource="@xml/stopwatch_widget_info" /></receiver>
+    </application>
+</manifest>
