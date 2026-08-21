@@ -75,21 +75,23 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .app-shell { min-height: 100vh; display: flex; }
 
 .sidebar {
-  width: 224px;
-  min-height: 100vh;
+  width: 224px; flex: 0 0 224px;
+  height: 100vh;
   padding: 24px 16px;
   border-right: 1px solid var(--border);
   background: color-mix(in srgb, var(--background) 92%, transparent);
   display: flex;
   flex-direction: column;
-  position: fixed;
-  inset: 0 auto 0 0;
+  position: sticky;
+  top: 0;
   z-index: 20;
 }
 
 .brand { display: flex; align-items: center; gap: 11px; padding: 4px 8px 28px; }
-.brand-mark { width: 34px; height: 34px; object-fit: contain; }
-.brand-name { font-size: 13px; font-weight: 800; letter-spacing: .18em; }
+.brand-mark { width: 38px; height: 38px; object-fit: contain; }
+.brand-lockup { display: grid; gap: 3px; }
+.brand-name { font-size: 12px; font-weight: 800; letter-spacing: .2em; }
+.brand-subline { color: var(--muted); font-family: "DM Mono", monospace; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
 
 .nav-stack { display: grid; gap: 5px; }
 .nav-item {
@@ -107,10 +109,11 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .foot-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 11px; }
 .foot-shortcut { font-family: "DM Mono", monospace; color: var(--foreground); font-size: 10px; padding: 3px 5px; border: 1px solid var(--border); border-radius: 4px; }
 
-.workspace { width: min(1460px, 100%); margin-left: 224px; min-height: 100vh; padding: 22px 28px 34px; }
+.workspace { width: min(1460px, calc(100% - 224px)); min-height: 100vh; padding: 22px 28px 34px; }
 .topbar { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 20px; }
 .eyebrow { color: var(--muted); text-transform: uppercase; letter-spacing: .16em; font-size: 10px; font-weight: 800; }
 .topbar-title { margin-top: 3px; font-size: 18px; font-weight: 800; letter-spacing: -.04em; }
+.topbar-index { margin-left: 8px; color: var(--signal); font-family: "DM Mono", monospace; font-size: 10px; font-weight: 500; letter-spacing: -.02em; vertical-align: 2px; }
 .topbar-actions { display: flex; align-items: center; gap: 8px; }
 
 .icon-button, .outline-button, .primary-button, .quiet-button, .text-button {
@@ -119,7 +122,9 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
   min-height: 38px; padding: 0 12px; border-radius: 8px; font-weight: 700; font-size: 12px;
   transition: transform 140ms var(--ease-out), background 140ms var(--ease-out), border-color 140ms var(--ease-out), color 140ms var(--ease-out);
 }
-.apk-download { text-decoration: none; white-space: nowrap; }
+.apk-download { border-color: var(--foreground); color: var(--foreground); text-decoration: none; white-space: nowrap; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
+.search-control { border-color: transparent; background: transparent; color: var(--muted); }
+.search-control:hover { background: var(--surface); color: var(--foreground); }
 .icon-button { width: 38px; padding: 0; }
 .icon-button:hover, .outline-button:hover { background: var(--surface); }
 .icon-button:active, .outline-button:active, .primary-button:active, .quiet-button:active, .text-button:active { transform: scale(.97); }
@@ -135,7 +140,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 
 .clock-canvas {
   min-height: 592px; padding: clamp(26px, 5vw, 70px); position: relative; overflow: hidden;
-  border: 1px solid var(--border); border-radius: 22px; background-color: var(--paper);
+  border: 1px solid var(--border); border-radius: 10px; background-color: var(--paper);
   background-image: linear-gradient(90deg, color-mix(in srgb, var(--paper) 94%, transparent), color-mix(in srgb, var(--paper) 63%, transparent)), url('/assets/clock-radial-hero.png');
   background-position: center; background-size: cover;
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(270px, .72fr); gap: 32px;
@@ -178,7 +183,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .next-time span { font-family: "Manrope", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
 .empty-next { font-size: 13px; color: var(--muted); font-weight: 600; }
 
-.status-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 18px; border: 1px solid var(--border); background: var(--paper); border-radius: 14px; overflow: hidden; }
+.status-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 18px; border: 1px solid var(--border); background: var(--paper); border-radius: 4px; overflow: hidden; }
 .status-item { padding: 15px 18px; border-right: 1px solid var(--border); }
 .status-item:last-child { border-right: 0; }
 .status-label { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
@@ -189,7 +194,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .section-subtitle { max-width: 470px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
 
 .section-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(290px, .8fr); gap: 18px; }
-.panel { border: 1px solid var(--border); border-radius: 16px; background: var(--paper); overflow: hidden; }
+.panel { border: 1px solid var(--border); border-radius: 7px; background: var(--paper); overflow: hidden; }
 .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 18px 20px; border-bottom: 1px solid var(--border); }
 .panel-title { margin: 0; font-size: 13px; font-weight: 800; letter-spacing: -.02em; }
 .panel-kicker { margin: 0 0 3px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; font-size: 9px; font-weight: 800; }
@@ -315,7 +320,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 
 @media (max-width: 900px) {
   .sidebar { display: none; }
-  .workspace { width: 100%; margin-left: 0; padding: 17px 16px 90px; }
+  .workspace { width: 100%; padding: 17px 16px 90px; }
   .topbar { margin-bottom: 12px; }
   .topbar-actions .outline-button { display: none; }
   .topbar-actions .apk-download { display: inline-flex; }
@@ -337,7 +342,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
   .topbar-title { font-size: 16px; }
   .topbar-actions { gap: 5px; }
   .apk-download { min-height: 38px; padding: 0 9px; font-size: 10px; }
-  .clock-canvas { padding: 21px; border-radius: 17px; }
+  .clock-canvas { padding: 21px; border-radius: 9px; }
   .time-display { font-size: clamp(52px, 16vw, 85px); }
   .clock-footer { margin-top: 25px; }
   .local-zone { text-align: left; }

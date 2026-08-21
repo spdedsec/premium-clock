@@ -65,3 +65,9 @@ The mark is a black circular clock index interrupted by a single vermilion time 
 
 ### Signature Brand Color
 **Signal Vermilion — `#D6472D`**
+
+## Style Decisions
+
+The desktop application uses a persistent narrow left instrument rail; the active section is marked by the Signal Vermilion slash, while the top bar is reserved for secondary utilities. Every primary screen keeps the clock-index mark and spaced-capital `PREMIUM:TIME` wordmark visible within this rail.
+
+Measured panels, aligned fields, and hairline rules define the surface language. Corner rounding is deliberately restrained, and top-level utility controls remain visually subordinate to the live clock, seconds, and next-alarm states.
