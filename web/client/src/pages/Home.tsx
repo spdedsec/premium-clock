@@ -11,6 +11,7 @@ import {
   Check,
   ChevronDown,
   Clock3,
+  Download,
   Globe2,
   Minus,
   MoreHorizontal,
@@ -493,8 +494,9 @@ export default function Home() {
       <div className="sidebar-foot"><button type="button" className="nav-item" onClick={() => setSearchOpen(true)}><Search />Search</button><div className="foot-row"><span>Quick find</span><span className="foot-shortcut">⌘ K</span></div></div>
     </aside>
     <main className="workspace">
-      <header className="topbar"><div><p className="eyebrow">Premium Clock</p><div className="topbar-title">{nav.find((item) => item.id === view)?.label}</div></div><div className="topbar-actions"><button type="button" className="outline-button" onClick={() => setSearchOpen(true)}><Search className="button-icon" /> Search <span className="foot-shortcut">⌘ K</span></button><button type="button" className="icon-button" aria-label="Toggle dark mode" onClick={() => setSettings((current) => ({ ...current, theme: current.theme === "dark" ? "light" : "dark" }))}>{settings.theme === "dark" ? <Sun className="button-icon" /> : <Moon className="button-icon" />}</button></div></header>
+      <header className="topbar"><div><p className="eyebrow">Premium Clock</p><div className="topbar-title">{nav.find((item) => item.id === view)?.label}</div></div><div className="topbar-actions"><a className="outline-button apk-download" href="https://github.com/spdedsec/premium-clock/releases/download/v1.0.0/premium-clock-android-v1.0.0-debug.apk" download><Download className="button-icon" /> Download APK</a><button type="button" className="outline-button" onClick={() => setSearchOpen(true)}><Search className="button-icon" /> Search <span className="foot-shortcut">⌘ K</span></button><button type="button" className="icon-button" aria-label="Toggle dark mode" onClick={() => setSettings((current) => ({ ...current, theme: current.theme === "dark" ? "light" : "dark" }))}>{settings.theme === "dark" ? <Sun className="button-icon" /> : <Moon className="button-icon" />}</button></div></header>
       {view === "clock" && renderClock()}{view === "alarms" && renderAlarms()}{view === "timers" && renderTimers()}{view === "tools" && renderTools()}{view === "settings" && renderSettings()}
+      <footer className="site-credit">Velvex Labs <span>·</span> spdedsec</footer>
     </main>
     <nav className="mobile-nav" aria-label="Mobile navigation">{nav.map((item) => { const Icon = item.icon; return <button type="button" key={item.id} className={view === item.id ? "is-active" : ""} onClick={() => switchView(item.id)}><Icon />{item.label}</button>; })}</nav>
     {notice && <div className="notice"><Check size={15} />{notice}</div>}

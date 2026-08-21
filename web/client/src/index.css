@@ -119,6 +119,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
   min-height: 38px; padding: 0 12px; border-radius: 8px; font-weight: 700; font-size: 12px;
   transition: transform 140ms var(--ease-out), background 140ms var(--ease-out), border-color 140ms var(--ease-out), color 140ms var(--ease-out);
 }
+.apk-download { text-decoration: none; white-space: nowrap; }
 .icon-button { width: 38px; padding: 0; }
 .icon-button:hover, .outline-button:hover { background: var(--surface); }
 .icon-button:active, .outline-button:active, .primary-button:active, .quiet-button:active, .text-button:active { transform: scale(.97); }
@@ -309,12 +310,15 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .empty-search { padding: 25px 14px; color: var(--muted); font-size: 12px; font-weight: 700; }
 
 .mobile-nav { display: none; }
+.site-credit { margin: 20px 0 0; color: var(--muted); font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.site-credit span { color: var(--signal); padding: 0 4px; }
 
 @media (max-width: 900px) {
   .sidebar { display: none; }
   .workspace { width: 100%; margin-left: 0; padding: 17px 16px 90px; }
   .topbar { margin-bottom: 12px; }
   .topbar-actions .outline-button { display: none; }
+  .topbar-actions .apk-download { display: inline-flex; }
   .clock-canvas { grid-template-columns: 1fr; min-height: 0; padding: 26px; }
   .clock-canvas::before { display: none; }
   .clock-main { min-height: 310px; }
@@ -332,6 +336,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 @media (max-width: 620px) {
   .topbar-title { font-size: 16px; }
   .topbar-actions { gap: 5px; }
+  .apk-download { min-height: 38px; padding: 0 9px; font-size: 10px; }
   .clock-canvas { padding: 21px; border-radius: 17px; }
   .time-display { font-size: clamp(52px, 16vw, 85px); }
   .clock-footer { margin-top: 25px; }
