@@ -37,4 +37,6 @@ When importing this repository into Vercel, set the **Root Directory** to `web`.
 
 ## Release assets
 
-The `v1.0.0` GitHub release ships the Android debug APK and a standalone Android source archive. The browser application is released directly from the repository source and can be deployed as the static Vite application described above.
+The `v1.0.0` GitHub release ships the Android debug APK and a standalone Android source archive. The browser application is released directly from the repository source and can be deployed as the static Vite application described above. 
+
+Ok bye
